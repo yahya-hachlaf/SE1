@@ -1,7 +1,5 @@
 package org.hbrs.se1.ws21.uebung1.control;
 
-import java.util.HashMap;
-
 public class GermanTranslator implements Translator {
 
 	public String date = "Okt/2021"; // Default-Wert
@@ -10,22 +8,22 @@ public class GermanTranslator implements Translator {
 	 * Methode zur Übersetzung einer Zahl in eine String-Repraesentation
 	 */
 	public String translateNumber( int number ) {
-		final HashMap<Integer,String> numbers = new HashMap<>();
+		String[] arrNumbers = {"eins", "zwei", "drei", "vier" , "fünf",
+				               "sechs" , "sieben" , "acht" , "neun" , "zehn" };
+		String text = "";
 
-		numbers.put(0,"");
-		numbers.put(1,"Eins");
-		numbers.put(2,"Zwei");
-		numbers.put(3,"Drei");
-		numbers.put(4,"Vier");
-		numbers.put(5,"Fünf");
-		numbers.put(6,"Sechs");
-		numbers.put(7,"Sieben");
-		numbers.put(8,"Acht");
-		numbers.put(9,"Neun");
-		numbers.put(10,"Zehn");
-
-
-		return numbers.get(number);
+		// Je nach der Eingabe wird eine Zahl im schriftlichen Form zurückgeliefert.
+		// Index fängt bei 0 in Arrays an, von daher ist eine -1 notwendig.
+		// Falls eine ungültige Zahl eingegeben wurde, wird ein ArrayIndexOutOfBoundsException aufgelöst
+		// und genau dann wird diese Exception geschnappt und die Fehler Nachricht zurückliefern.
+		try{
+			// String Zahl wird hier gespeichert
+			text = arrNumbers[number - 1];
+		} catch(ArrayIndexOutOfBoundsException e){
+			// Die Fehlermeldung die zurückgeliefert wird
+			System.out.println("Übersetzung der Zahl " + number + " nicht möglich " + "( Version " + version +" )");
+		}
+		return text;
 	}
 		
 	/**
