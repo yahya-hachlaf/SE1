@@ -1,11 +1,9 @@
 package org.hbrs.se1.ws21.uebung1.view;
 
-import org.hbrs.se1.ws21.uebung1.control.*;
 import org.hbrs.se1.ws21.uebung1.control.Translator;
 import org.hbrs.se1.ws21.uebung1.control.factories.TranslateFactory;
 
 public class Client {
-
 	/*
 	 * Methode zur Ausgabe einer Zahl auf der Console
 	 */
@@ -17,14 +15,17 @@ public class Client {
 		// Strenge Implementierung gegen das Interface Translator gewuenscht!
 		// Design Pattern: Factory Method
 		Translator translator = TranslateFactory.createGermanTranslator();
-		String result = translator.translateNumber(1);
+		String result = translator.translateNumber(aNumber);
 
-		System.out.println("Das Ergebnis der Berechnung: " +
-				result  );
-
+		if (result.equals("")){
+			System.out.println("Berechnung wird abgebrochen");
+		} else {
+			System.out.println("Das Ergebnis der Berechnung: " + result  );
+		}
 	}
 	public static void main (String[] args){
-		System.out.println("test");
+		Client client = new Client();
+		client.display(11);
 	}
 
 }
