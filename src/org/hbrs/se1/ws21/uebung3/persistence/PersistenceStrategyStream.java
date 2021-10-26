@@ -40,7 +40,23 @@ public class PersistenceStrategyStream<Member> implements PersistenceStrategy<Me
      * Method for saving a list of Member-objects to a disk (HDD)
      */
     public  void save(List<Member> member) throws PersistenceException  {
+        // with fos data will be written to a file
+        ObjectOutputStream oos = null;
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(PersistenceStrategyStream.this.location);
+            oos = new ObjectOutputStream(fos);
 
+            // write members to the file
+            oos.writeObject(member);
+            System.out.println( member.size() + "The Members have been successfully saved!");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (oos != null) try { oos.close(); } catch (IOException e) {}
+            if (fos != null) try { fos.close(); } catch (IOException e) {}
+        }
     }
 
     @Override
