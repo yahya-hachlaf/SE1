@@ -5,7 +5,25 @@ import java.util.ArrayList;
 public class Container {
 
     // Arraylist list which contains only Member objects
-    private ArrayList<Member> list = new ArrayList<>();
+    private static ArrayList<Member> list = new ArrayList<>();
+
+    /* CR 1: Singleton Design Pattern is a good solution for this CR
+    * in which we can ensure that only signle instance should be created
+    * and single object can be used by all other classes  */
+
+    // a static class variable holds only one instance of the Container class
+    private static Container obj;
+
+    // Container() prevents the instantiation from any other class
+    private Container(){}
+
+    // getInstance() provides a global point of access
+    private static Container getInstance(){
+        if(obj == null){
+            obj = new Container();
+        }
+        return obj;
+    }
 
     // Method addMember adds Member to the list
     public void addMember( Member member) throws ContainerException {
