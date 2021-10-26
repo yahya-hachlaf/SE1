@@ -97,14 +97,16 @@ public class Container {
         return null;
     }
 
-    // Store Methode stores the added Member Objects of a Countainer Object presistent in a Data Storage
-    private void store() throws PersistenceException{
+    PersistenceStrategyStream p = new PersistenceStrategyStream();
 
+    // Store Methode stores the added Member Objects of a Countainer Object presistent in a Data Storage(= in this case my HDD)
+    private void store() throws PersistenceException{
+        this.p.save(list);
     }
 
     // Load Methode loads the Member Objects after a restart
     private void load() throws PersistenceException{
-
+        list = this.p.load();
     }
 
 }
