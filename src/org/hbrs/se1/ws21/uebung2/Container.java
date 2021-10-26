@@ -1,4 +1,5 @@
 package org.hbrs.se1.ws21.uebung2;
+import org.hbrs.se1.ws21.uebung3.persistence.PersistenceException;
 
 import java.util.ArrayList;
 
@@ -18,8 +19,7 @@ public class Container {
     private Container(){}
 
     // getInstance() provides a global point of access
-    private static Container getInstance(){
-        if(obj == null){
+    public static Container getInstance(){
             // synchronized block allows only one Threat to access and modify the object
             // and prevents other threat from a parallel access
             synchronized (Container.class){
@@ -27,7 +27,6 @@ public class Container {
                     obj = new Container(); // instance will be created at request time
                 }
             }
-        }
         return obj;
     }
 
@@ -96,12 +95,12 @@ public class Container {
     }
 
     // Store Methode stores the added Member Objects of a Countainer Object presistent in a Data Storage
-    private void store() throws PresistenceException{
+    private void store() throws PersistenceException{
 
     }
 
     // Load Methode loads the Member Objects after a restart
-    private void load() throws PresistenceException{
+    private void load() throws PersistenceException{
 
     }
 
