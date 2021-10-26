@@ -1,12 +1,15 @@
 package org.hbrs.se1.ws21.uebung2;
 import org.hbrs.se1.ws21.uebung3.persistence.PersistenceException;
+import org.hbrs.se1.ws21.uebung3.persistence.PersistenceStrategy;
+import org.hbrs.se1.ws21.uebung3.persistence.PersistenceStrategyStream;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Container {
 
-    // Arraylist list which contains only Member objects
-    private static ArrayList<Member> list = new ArrayList<>();
+    // Arraylist list which contains Member objects
+    private static List<Member> list = null;
 
     /* CR 1: Singleton Design Pattern is a good solution for this CR
     * in which we can ensure that only signle instance should be created
@@ -16,7 +19,7 @@ public class Container {
     private static Container obj;
 
     // Container() prevents the instantiation from any other class
-    private Container(){}
+    private Container(){ list = new ArrayList<>(); }
 
     // getInstance() provides a global point of access
     public static Container getInstance(){
