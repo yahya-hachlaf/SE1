@@ -20,7 +20,13 @@ public class Container {
     // getInstance() provides a global point of access
     private static Container getInstance(){
         if(obj == null){
-            obj = new Container();
+            // synchronized block allows only one Threat to access and modify the object
+            // and prevents other threat from a parallel access
+            synchronized (Container.class){
+                if(obj==null){
+                    obj = new Container(); // instance will be created at request time
+                }
+            }
         }
         return obj;
     }
