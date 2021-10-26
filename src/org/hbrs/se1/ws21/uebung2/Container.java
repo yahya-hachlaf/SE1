@@ -95,4 +95,14 @@ public class Container {
         return null;
     }
 
+    // Store Methode stores the added Member Objects of a Countainer Object presistent in a Data Storage
+    private void store() throws PresistenceException{
+
+    }
+
+    // Load Methode loads the Member Objects after a restart
+    private void load() throws PresistenceException{
+
+    }
+
 }
