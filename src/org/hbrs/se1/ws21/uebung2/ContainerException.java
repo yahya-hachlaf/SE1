@@ -2,7 +2,14 @@ package org.hbrs.se1.ws21.uebung2;
 
 public class ContainerException extends Exception {
     Integer id;
+    String message;
 
+    public ContainerException(){};
+
+    public ContainerException( String message  ) {
+        super ( message );
+        this.message = message;
+    }
     @Override
     // printStackTrace() Method from the class Throwable
     public void printStackTrace() {

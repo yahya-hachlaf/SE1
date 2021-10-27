@@ -33,6 +33,10 @@ public class Container {
         return obj;
     }
 
+    public static List<Member> getCurrentList(){
+        return list;
+    }
+
     // Method addMember adds Member to the list
     public void addMember( Member member) throws ContainerException {
         // if the Member already exist in the list an Exception will
@@ -72,15 +76,6 @@ public class Container {
         }
     }
 
-    // Method dum prints returns all sotred Members objects in the list
-    public void dumb(){
-        System.out.println("All saved Members will be shown on the console:");
-        // print each Object in the list with toString Method
-        for ( Member p : list ) {
-            System.out.println( p.toString()  );
-        }
-    }
-
     // Methode size returns the size of the list
     public int size(){
         return list.size();
@@ -100,12 +95,12 @@ public class Container {
     PersistenceStrategyStream p = new PersistenceStrategyStream();
 
     // Store Methode stores the added Member Objects of a Countainer Object presistent in a Data Storage(= in this case my HDD)
-    private void store() throws PersistenceException{
+    public void store() throws PersistenceException{
         this.p.save(list);
     }
 
     // Load Methode loads the Member Objects after a restart
-    private void load() throws PersistenceException{
+    public void load() throws PersistenceException{
         list = this.p.load();
     }
 
